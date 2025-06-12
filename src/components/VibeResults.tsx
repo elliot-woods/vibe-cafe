@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { VibeAnalysis } from '@/types';
 
 interface VibeResultsProps {
@@ -43,9 +44,11 @@ export default function VibeResults({ analysis, imageUrl }: VibeResultsProps) {
 
       {imageUrl && (
         <div className="mb-6">
-          <img
+          <Image
             src={imageUrl}
             alt="Uploaded venue"
+            width={800}
+            height={192}
             className="w-full h-48 object-cover rounded-lg"
           />
         </div>

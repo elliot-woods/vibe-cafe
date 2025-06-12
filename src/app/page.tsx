@@ -38,7 +38,7 @@ export default function HomePage() {
         setError(data.error || 'Failed to analyze image');
         setUploadedImageUrl(null);
       }
-    } catch (err) {
+    } catch {
       setError('Network error. Please try again.');
       setUploadedImageUrl(null);
     } finally {
