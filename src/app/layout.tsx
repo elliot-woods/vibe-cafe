@@ -29,9 +29,6 @@ export default function RootLayout({
           {children}
         </main>
         <footer className="bg-white border-t mt-16">
-          <div className="max-w-4xl mx-auto px-4 py-6 text-center text-gray-500 text-sm">
-            Powered by OpenAI • Built with Next.js
-          </div>
         </footer>
       </body>
     </html>

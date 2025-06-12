@@ -46,6 +46,23 @@ export default function HomePage() {
     }
   };
 
+  const handleTestImage = async () => {
+    try {
+      // Fetch the test image from the public directory
+      const response = await fetch('/test_images/test_image_1.jpg');
+      const blob = await response.blob();
+      
+      // Convert blob to File object
+      const file = new File([blob], 'test_image_1.jpg', { type: 'image/jpeg' });
+      
+      // Use the existing file select handler
+      handleFileSelect(file);
+    } catch (error) {
+      console.error('Failed to load test image:', error);
+      setError('Failed to load test image. Please try uploading your own image.');
+    }
+  };
+
   const handleReset = () => {
     setResult(null);
     setError(null);
@@ -69,7 +86,27 @@ export default function HomePage() {
       </div>
 
       {!result && !isLoading && (
-        <UploadZone onFileSelect={handleFileSelect} disabled={isLoading} />
+        <div className="space-y-6">
+          <UploadZone onFileSelect={handleFileSelect} disabled={isLoading} />
+          
+          <div className="text-center">
+            <div className="flex items-center justify-center space-x-4">
+              <div className="h-px bg-gray-300 flex-1"></div>
+              <span className="text-gray-500 text-sm">or</span>
+              <div className="h-px bg-gray-300 flex-1"></div>
+            </div>
+            <button
+              onClick={handleTestImage}
+              disabled={isLoading}
+              className="mt-4 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200"
+            >
+              Try with Sample Image
+            </button>
+            <p className="text-xs text-gray-500 mt-2">
+              Use our test image to see how the analysis works
+            </p>
+          </div>
+        </div>
       )}
 
       {isLoading && (

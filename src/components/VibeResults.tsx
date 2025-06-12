@@ -43,14 +43,17 @@ export default function VibeResults({ analysis, imageUrl }: VibeResultsProps) {
       </div>
 
       {imageUrl && (
-        <div className="mb-6">
-          <Image
-            src={imageUrl}
-            alt="Uploaded venue"
-            width={800}
-            height={192}
-            className="w-full h-48 object-cover rounded-lg"
-          />
+        <div className="mb-6 flex justify-center">
+          <div className="inline-block rounded-lg overflow-hidden border border-gray-200 shadow-sm">
+            <Image
+              src={imageUrl}
+              alt="Uploaded venue"
+              width={800}
+              height={600}
+              className="max-h-96 object-contain"
+              style={{ width: 'auto', height: 'auto' }}
+            />
+          </div>
         </div>
       )}
 
