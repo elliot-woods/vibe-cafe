@@ -12,7 +12,7 @@ const openai = new OpenAI({
 export async function analyzeVibe(imageBase64: string): Promise<VibeAnalysis> {
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o",
+      model: "gpt-4o-123",
       messages: [
         {
           role: "system",
